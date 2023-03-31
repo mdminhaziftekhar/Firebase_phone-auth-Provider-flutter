@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
+
 
 final List<String> months = <String>[
   "Jan",
@@ -60,4 +64,28 @@ Route navigateRoute(context, page) {
 
 String getHmaFromTime(TimeOfDay time) {
   return "${(time.hour > 12 ? time.hour - 12 : time.hour).abs()}:${(time.minute < 10 ? "0${time.minute}" : time.minute)} ${time.hour >= 12 ? "PM" : "AM"}";
+}
+
+
+void showSnackBar(BuildContext context, String content) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(content),
+    ),
+  );
+}
+
+Future<File?> pickImage(BuildContext context) async {
+  File? image;
+  try {
+    final pickedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      image = File(pickedImage.path);
+    }
+  } catch (e) {
+    showSnackBar(context, e.toString());
+  }
+
+  return image;
 }

@@ -3,12 +3,17 @@ import 'package:my_diary/constants/color_constanst.dart';
 import 'package:my_diary/screens/ans_one/ans_one_screen.dart';
 import 'package:my_diary/screens/ans_two/ans_two_screen.dart';
 import 'package:my_diary/utils/utility.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/auth_provider.dart';
+import '../screens/welcome/welcome_screen.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
     return Drawer(
       backgroundColor: Colors.white,
       child: ListView(
@@ -21,6 +26,18 @@ class Sidebar extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                     color: GrayColor.color10)),
+          ),
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: NetworkImage(ap.userModel.profilePic),
+          ),
+          Text(
+            ap.userModel.name,
+            style: TextStyle(fontSize: 15, color: Colors.black),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 50,
           ),
           ListItem(
             title: "Ans Question One",
@@ -38,7 +55,7 @@ class Sidebar extends StatelessWidget {
             title: "Ans Question Two",
             icon: Icons.question_answer,
             onPressed: () => {
-               Navigator.of(context).push(
+              Navigator.of(context).push(
                 navigateRoute(
                   context,
                   const AnswerTwoScreen(),
@@ -46,8 +63,22 @@ class Sidebar extends StatelessWidget {
               )
             },
           ),
-          
-          
+          SizedBox(
+            height: 20,
+          ),
+          IconButton(
+            onPressed: () {
+              ap.userSignOut().then(
+                    (value) => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const WelcomeScreen(),
+                      ),
+                    ),
+                  );
+            },
+            icon: const Icon(Icons.exit_to_app),
+          ),
         ],
       ),
     );

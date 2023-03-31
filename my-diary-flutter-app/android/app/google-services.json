@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "553988396434",
+    "project_id": "eigoo-fd361",
+    "storage_bucket": "eigoo-fd361.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553988396434:android:6447c3ec85412d67c7dd4b",
+        "android_client_info": {
+          "package_name": "com.example.my_diary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553988396434-h6vng2m6loho650osntjkbusv2naj7q6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_diary",
+            "certificate_hash": "9a9d9a41eaebc2f976ce582e7b4de5fb4f95bec1"
+          }
+        },
+        {
+          "client_id": "553988396434-1o6s0ohmsll2jiru3pdpj4sppqp2107p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4VgcT98FscYjZy23qxurmrX6SD8gwYWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553988396434-1o6s0ohmsll2jiru3pdpj4sppqp2107p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
